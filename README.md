@@ -1,3 +1,45 @@
+# Updated Readme
+
+Fork: This fork focuses on feature matching and updates the packaging system to not use sys path hacks
+
+Run `make local` to build the docker image and `make bash` to run it
+
+Once inside the container run `python match_pair.py -h` to get the help output:
+```
+usage: match_pair.py [-h] [--weight WEIGHT] [--config_path CONFIG_PATH] [--input_1st INPUT_1ST]
+                     [--input_2nd INPUT_2ND] [--output_file OUTPUT_FILE]
+                     [--ransac_reproj_thresh RANSAC_REPROJ_THRESH] [--ransac_confidence RANSAC_CONFIDENCE]
+                     [--ransac_max_iters RANSAC_MAX_ITERS]
+
+QuadTreeAttention demo
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --weight WEIGHT       Path to the checkpoint. (default: /workspace/weights/indoor.ckpt)
+  --config_path CONFIG_PATH
+                        Path to the config. (default:
+                        /workspace/FeatureMatching/loftr/configs/loftr/indoor/loftr_ds_quadtree.py)
+  --input_1st INPUT_1ST
+                        1st image. (default: None)
+  --input_2nd INPUT_2ND
+                        2nd image. (default: None)
+  --output_folder OUTPUT_FOLDER
+                        Folder to save .mat and plot in. (default: /workspace/data/output)
+  --ransac_reproj_thresh RANSAC_REPROJ_THRESH
+                        Parameter used only for RANSAC. It is the maximum distance from a point to an epipolar
+                        line in pixels, beyond which the point is considered an outlier and is not used for
+                        computing the final fundamental matrix. (default: 0.5)
+  --ransac_confidence RANSAC_CONFIDENCE
+                        Parameter used for the RANSAC and LMedS methods only. It specifies a desirable level
+                        of confidence (probability) that the estimated matrix is correct. In the range 0..1
+                        exclusive. (default: 0.999)
+  --ransac_max_iters RANSAC_MAX_ITERS
+  ```
+
+  To run a demo run `python match_pair.py --input_1st ./data/images/pair_1.jpg --input_2nd ./data/images/pair_2.jpg --output_folder ./data/output`
+
+# Original Readme
+
 This repository contains codes for quadtree attention. This repo contains codes for feature matching, image classficiation, object detection and semantic segmentation.
 
 <div align="center">
